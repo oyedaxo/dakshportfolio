@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
+import { ArrowRight, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { personalData } from "@/data/personal";
 import { socialsData } from "@/data/socials";
 import { statsData } from "@/data/stats";
@@ -102,7 +103,21 @@ export function Hero() {
               I build modern web applications and AI-powered products that solve real problems.
             </p>
 
-
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mt-2">
+              <Link href="#projects">
+                <Button className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground transition-all rounded-xl px-6 h-12 text-sm font-semibold shadow-lg shadow-primary/25">
+                  {personalData.viewProjectsButtonText}
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <a href="/Daksh_Chaudhary_CV.pdf" download="Daksh_Chaudhary_CV.pdf">
+                <Button variant="outline" className="gap-2 bg-foreground/5 hover:bg-foreground/10 transition-all rounded-xl px-6 h-12 text-sm text-foreground font-semibold border-foreground/10">
+                  <Download className="w-4 h-4" />
+                  {personalData.resumeButtonText}
+                </Button>
+              </a>
+            </div>
 
             {/* Social Icons */}
             <div className="mt-4">
