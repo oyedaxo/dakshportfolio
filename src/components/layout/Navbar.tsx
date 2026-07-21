@@ -65,7 +65,7 @@ export function Navbar() {
 
             {/* CTA (Right side) */}
             <div className="flex flex-row items-center justify-end gap-3 shrink-0 lg:w-[250px]">
-              <a href="/Daksh_Chaudhary_Resume.pdf" download="Daksh_Chaudhary_Resume.pdf">
+              <a href="/Daksh_Chaudhary_CV.pdf" download="Daksh_Chaudhary_CV.pdf">
                 <Button className="hidden lg:flex gap-2 bg-blue-500 hover:bg-blue-600 text-white transition-all rounded-full h-10 px-6 text-[15px] font-medium">
                   <Download className="w-4 h-4" />
                   <span>{personalData.resumeButtonText}</span>
@@ -120,7 +120,7 @@ export function Navbar() {
                 );
               })}
               <div className="h-px bg-foreground/10 my-2" />
-              <a href="/Daksh_Chaudhary_Resume.pdf" download="Daksh_Chaudhary_Resume.pdf" className="w-full">
+              <a href="/Daksh_Chaudhary_CV.pdf" download="Daksh_Chaudhary_CV.pdf" className="w-full">
                 <Button className="w-full gap-2 bg-blue-500 hover:bg-blue-600 text-white transition-all rounded-full h-12 text-[15px] font-medium mt-4">
                   <Download className="w-4 h-4" />
                   <span>{personalData.resumeButtonText}</span>
