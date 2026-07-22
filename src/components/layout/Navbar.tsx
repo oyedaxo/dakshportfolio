@@ -5,12 +5,24 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download } from "lucide-react";
+import { X, Download, MoreVertical, Home, User, FolderGit2, Briefcase, Code, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { personalData } from "@/data/personal";
 import { navLinks } from "@/data/navigation";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+
+const getIcon = (name: string) => {
+  switch (name) {
+    case 'Home': return <Home className="w-5 h-5 mr-4" />;
+    case 'About': return <User className="w-5 h-5 mr-4" />;
+    case 'Projects': return <FolderGit2 className="w-5 h-5 mr-4" />;
+    case 'Experience': return <Briefcase className="w-5 h-5 mr-4" />;
+    case 'Skills': return <Code className="w-5 h-5 mr-4" />;
+    case 'Contact': return <Mail className="w-5 h-5 mr-4" />;
+    default: return null;
+  }
+}
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +91,7 @@ export function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle Menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-6 h-6" /> : <MoreVertical className="w-6 h-6" />}
             </button>
           </div>
         </GlassCard>
@@ -95,7 +107,7 @@ export function Navbar() {
             transition={{ type: "spring", bounce: 0, duration: 0.3 }}
             className="absolute top-24 left-6 right-6 md:hidden"
           >
-            <GlassCard className="rounded-2xl p-6 flex flex-col gap-4">
+            <GlassCard className="rounded-2xl p-4 flex flex-col gap-1">
               {navLinks.map((link) => {
                 const isAnchor = link.href.startsWith('#');
                 const href = pathname === '/' ? link.href : (isAnchor ? `/${link.href}` : link.href);
@@ -112,20 +124,23 @@ export function Navbar() {
                   <Link
                     key={link.name}
                     href={href}
-                    className="text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+                    className="flex items-center text-[17px] font-medium text-muted-foreground hover:text-foreground transition-colors py-3 px-4 hover:bg-foreground/5 rounded-xl"
                     onClick={handleClick}
                   >
+                    {getIcon(link.name)}
                     {link.name}
                   </Link>
                 );
               })}
-              <div className="h-px bg-foreground/10 my-2" />
-              <a href="/Daksh_Chaudhary_CV.pdf" download="Daksh_Chaudhary_CV.pdf" className="w-full">
-                <Button className="w-full gap-2 bg-blue-500 hover:bg-blue-600 text-white transition-all rounded-full h-12 text-[15px] font-medium mt-4">
-                  <Download className="w-4 h-4" />
-                  <span>{personalData.resumeButtonText}</span>
-                </Button>
-              </a>
+              <div className="h-px bg-foreground/10 my-2 mx-4" />
+              <div className="px-4 pb-2">
+                <a href="/Daksh_Chaudhary_CV.pdf" download="Daksh_Chaudhary_CV.pdf" className="w-full block">
+                  <Button className="w-full gap-2 bg-blue-500 hover:bg-blue-600 text-white transition-all rounded-full h-12 text-[15px] font-medium mt-2">
+                    <Download className="w-4 h-4" />
+                    <span>{personalData.resumeButtonText}</span>
+                  </Button>
+                </a>
+              </div>
             </GlassCard>
           </motion.div>
         )}
@@ -133,3 +148,4 @@ export function Navbar() {
     </header>
   );
 }
+
