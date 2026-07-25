@@ -48,6 +48,30 @@ export const projects: Project[] = [
     challenges: "Optimizing end-to-end latency across STT, Translation, and TTS models while keeping video and audio in sync.",
     learned: "Working with WebRTC signaling, STUN/TURN servers, and optimizing chunked audio processing for AI models.",
     future: "Add meeting transcripts, AI summaries, and end-to-end encryption."
+  },
+  {
+    slug: "line-following-robot",
+    title: "Line Following Robot",
+    description: "An embedded systems project implementing sensor-based decision logic and PID-based motor control for track navigation.",
+    image: "/images/line-following-robot.png",
+    technologies: ["Embedded Systems", "Sensor Programming"],
+    githubUrl: "",
+    liveUrl: "",
+    category: "Hardware",
+    overview: "Built a line following robot utilizing embedded systems and sensor programming with PID-based motor control.",
+    problem: "Developing an autonomous robot that reliably tracks a line with minimal latency.",
+    solution: "Designed sensor-based decision logic with under 100ms response time and implemented PID-based motor control for smooth tracking.",
+    features: [
+      "Sensor-based decision logic (under 100ms response)",
+      "Calibrated IR sensor thresholds for reliable tracking",
+      "PID-based motor control"
+    ],
+    screenshots: [
+      "/images/line-following-robot.png"
+    ],
+    challenges: "Calibrating IR sensor thresholds for varying lighting conditions.",
+    learned: "Embedded systems integration and PID tuning.",
+    future: "Incorporate obstacle avoidance."
   }
 ];
 
