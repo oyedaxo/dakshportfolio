@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, Video } from "lucide-react";
 import Link from "next/link";
 import { OriginButton } from "@/components/ui/origin-button";
+import { TiltWrapper } from "@/components/ui/tilt-wrapper";
 
 
 export function EditingStuff() {
@@ -16,7 +17,8 @@ export function EditingStuff() {
           viewport={{ once: true }}
         >
           <Link href="https://drive.google.com/drive/folders/1JabS5qRMWWK60jO4VNjvebGwYOtRSEN7?usp=drive_link" target="_blank" rel="noopener noreferrer" className="block group [perspective:1000px]">
-            <div className="relative overflow-hidden rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-primary/20 hover:border-primary/50 transition-all duration-500 ease-in-out liquid-glass [transform-style:preserve-3d] group-hover:[transform:rotate3d(1,-1,0,15deg)] group-hover:[box-shadow:rgba(0,0,0,0.2)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px]">
+            <TiltWrapper>
+              <div className="relative overflow-hidden rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-primary/20 hover:border-primary/50 transition-all duration-500 ease-in-out liquid-glass group-hover:[box-shadow:rgba(0,0,0,0.2)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px]">
               
               {/* Background Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
@@ -41,7 +43,8 @@ export function EditingStuff() {
                   View Portfolio
                 </OriginButton>
               </div>
-            </div>
+              </div>
+            </TiltWrapper>
           </Link>
         </motion.div>
       </div>

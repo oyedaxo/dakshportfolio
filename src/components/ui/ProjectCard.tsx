@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { TiltWrapper } from "@/components/ui/tilt-wrapper";
 
 interface ProjectCardProps {
   slug: string;
@@ -17,7 +18,8 @@ interface ProjectCardProps {
 export function ProjectCard({ slug, title, description, image, technologies }: ProjectCardProps) {
   return (
     <Link href={`/projects/${slug}`} className="block h-full cursor-pointer group [perspective:1000px]">
-      <div className="h-full relative liquid-glass rounded-2xl overflow-hidden flex flex-row items-center border border-foreground/5 hover:border-primary/50 transition-all duration-500 ease-in-out bg-foreground/5 p-2 [transform-style:preserve-3d] group-hover:[transform:rotate3d(1,-1,0,10deg)] group-hover:[box-shadow:rgba(0,0,0,0.2)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px]">
+      <TiltWrapper>
+        <div className="h-full relative liquid-glass rounded-2xl overflow-hidden flex flex-row items-center border border-foreground/5 hover:border-primary/50 transition-all duration-500 ease-in-out bg-foreground/5 p-2 group-hover:[box-shadow:rgba(0,0,0,0.2)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px]">
         {/* Animated Glow */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent blur-xl" />
 
@@ -57,7 +59,8 @@ export function ProjectCard({ slug, title, description, image, technologies }: P
               )}
             </div>
           </div>
-      </div>
+        </div>
+      </TiltWrapper>
     </Link>
   );
 }
