@@ -38,8 +38,9 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
+        className="w-full md:w-[90%] lg:w-[85%] mx-auto"
       >
-        <GlassCard glow className="overflow-hidden relative w-full aspect-video md:aspect-[21/9] p-0">
+        <GlassCard glow className="overflow-hidden relative w-full aspect-video md:aspect-[21/9] p-0 rounded-3xl md:rounded-[2.5rem]">
           <Image 
           src={project.image} 
           alt={project.title} 
@@ -71,7 +72,7 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             viewport={{ once: true }}
           >
             <TiltWrapper>
-              <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-500/50 h-full">
+              <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-500/50 h-full">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Overview</h2>
                 <p className="text-muted-foreground leading-relaxed">{project.overview}</p>
               </div>
@@ -84,7 +85,7 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             viewport={{ once: true }}
           >
             <TiltWrapper>
-              <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-orange-500/50 h-full">
+              <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-orange-500/50 h-full">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Problem Statement</h2>
                 <p className="text-muted-foreground leading-relaxed">{project.problem}</p>
               </div>
@@ -97,7 +98,7 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             viewport={{ once: true }}
           >
             <TiltWrapper>
-              <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-emerald-500/50 h-full">
+              <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-emerald-500/50 h-full">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">The Solution</h2>
                 <p className="text-muted-foreground leading-relaxed">{project.solution}</p>
               </div>
@@ -111,13 +112,13 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             className="flex flex-col gap-6"
           >
             <TiltWrapper>
-              <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-destructive/50 h-full">
+              <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-destructive/50 h-full">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">Challenges Faced</h2>
                 <p className="text-muted-foreground leading-relaxed">{project.challenges}</p>
               </div>
             </TiltWrapper>
             <TiltWrapper>
-              <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-green-500/50 h-full">
+              <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-green-500/50 h-full">
                 <h2 className="text-2xl font-bold mb-4 text-foreground">What I Learned</h2>
                 <p className="text-muted-foreground leading-relaxed">{project.learned}</p>
               </div>
@@ -145,7 +146,7 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
 
               return (
                 <TiltWrapper>
-                  <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-purple-500/50 h-full">
+                  <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-purple-500/50 h-full">
                     <h3 className="text-xl font-bold mb-6 text-foreground">{headingText}</h3>
                     <div className="flex flex-col gap-4">
                       {hasLive && (
@@ -157,7 +158,7 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
                       )}
                       {hasGithub && (
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <OriginButton className="w-full h-10 gap-2 bg-background/95 backdrop-blur-xl border-white/5 border-foreground/10 text-foreground">
+                          <OriginButton className="w-full h-10 gap-2 bg-foreground/5 backdrop-blur-3xl border-white/10 border-foreground/10 text-foreground">
                             <Code2 className="w-4 h-4" /> Source Code
                           </OriginButton>
                         </a>
@@ -169,7 +170,7 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             })()}
 
             <TiltWrapper>
-              <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-cyan-500/50 h-full">
+              <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-cyan-500/50 h-full">
                 <h3 className="text-xl font-bold mb-6 text-foreground">Key Features</h3>
                 <ul className="space-y-4">
                   {project.features.map((feature, i) => (
@@ -192,7 +193,7 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <div className="bg-background/95 backdrop-blur-xl border-white/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-primary/50 flex flex-col sm:flex-row items-center justify-between gap-8">
+        <div className="bg-foreground/5 backdrop-blur-3xl border-white/10 p-6 md:p-8 rounded-2xl border-l-4 border-l-primary/50 flex flex-col sm:flex-row items-center justify-between gap-8">
           {prevProject ? (
             <Link href={`/projects/${prevProject.slug}`} className="group flex flex-col items-start w-full sm:w-auto">
               <span className="text-xs text-muted-foreground mb-1 flex items-center gap-1 group-hover:text-primary transition-colors">
