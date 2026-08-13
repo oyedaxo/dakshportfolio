@@ -15,7 +15,6 @@ export default function Home() {
       
       <div className="flex flex-col">
         <Hero />
-        <About />
         <FeaturedProjects />
         <EditingStuff />
         <Experience />
