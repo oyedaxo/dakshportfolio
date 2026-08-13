@@ -24,9 +24,9 @@ export function useScrollSpy(ids: string[], offset: number = 100) {
         }
       }
 
-      // If at very top, default to first id
-      if (window.scrollY === 0 && elements.length > 0) {
-        currentActiveId = elements[0].id;
+      // If at very top, clear active section so it defaults to Home
+      if (window.scrollY === 0) {
+        currentActiveId = "";
       }
 
       // Check if scrolled to bottom
@@ -34,7 +34,7 @@ export function useScrollSpy(ids: string[], offset: number = 100) {
         currentActiveId = elements[elements.length - 1].id;
       }
 
-      if (currentActiveId && currentActiveId !== activeId) {
+      if (currentActiveId !== activeId) {
         setActiveId(currentActiveId);
       }
     };
