@@ -60,20 +60,21 @@ export function Navbar() {
                     key={link.name}
                     href={href}
                     onClick={handleClick}
+                    className="relative inline-block"
                   >
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute inset-0 bg-foreground dark:bg-neutral-50 rounded-full"
+                      />
+                    )}
                     <OriginButton
                       className={cn(
                         "relative px-4 h-10 rounded-full text-[15px] font-medium transition-colors shrink-0 border-transparent bg-transparent dark:bg-transparent",
-                        isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                        isActive ? "!text-background dark:!text-neutral-950" : "text-muted-foreground hover:text-foreground"
                       )}
                     >
                       {link.name}
-                      {isActive && (
-                        <motion.div
-                          layoutId="navbar-indicator"
-                          className="absolute bottom-1 left-3 right-3 h-0.5 bg-foreground rounded-full"
-                        />
-                      )}
                     </OriginButton>
                   </Link>
                 );
