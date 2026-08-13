@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { OriginButton } from "@/components/ui/origin-button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Project } from "@/types";
+import { TiltWrapper } from "@/components/ui/tilt-wrapper";
 
 interface ProjectDetailsProps {
   project: Project;
@@ -69,10 +70,12 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-500/50">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Overview</h2>
-              <p className="text-muted-foreground leading-relaxed">{project.overview}</p>
-            </div>
+            <TiltWrapper>
+              <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-blue-500/50 h-full">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Overview</h2>
+                <p className="text-muted-foreground leading-relaxed">{project.overview}</p>
+              </div>
+            </TiltWrapper>
           </motion.section>
 
           <motion.section
@@ -80,10 +83,12 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-orange-500/50">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Problem Statement</h2>
-              <p className="text-muted-foreground leading-relaxed">{project.problem}</p>
-            </div>
+            <TiltWrapper>
+              <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-orange-500/50 h-full">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Problem Statement</h2>
+                <p className="text-muted-foreground leading-relaxed">{project.problem}</p>
+              </div>
+            </TiltWrapper>
           </motion.section>
 
           <motion.section
@@ -91,10 +96,12 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-emerald-500/50">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">The Solution</h2>
-              <p className="text-muted-foreground leading-relaxed">{project.solution}</p>
-            </div>
+            <TiltWrapper>
+              <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-emerald-500/50 h-full">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">The Solution</h2>
+                <p className="text-muted-foreground leading-relaxed">{project.solution}</p>
+              </div>
+            </TiltWrapper>
           </motion.section>
 
           <motion.section
@@ -103,14 +110,18 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
             viewport={{ once: true }}
             className="flex flex-col gap-6"
           >
-            <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-destructive/50">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">Challenges Faced</h2>
-              <p className="text-muted-foreground leading-relaxed">{project.challenges}</p>
-            </div>
-            <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-green-500/50">
-              <h2 className="text-2xl font-bold mb-4 text-foreground">What I Learned</h2>
-              <p className="text-muted-foreground leading-relaxed">{project.learned}</p>
-            </div>
+            <TiltWrapper>
+              <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-destructive/50 h-full">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">Challenges Faced</h2>
+                <p className="text-muted-foreground leading-relaxed">{project.challenges}</p>
+              </div>
+            </TiltWrapper>
+            <TiltWrapper>
+              <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-green-500/50 h-full">
+                <h2 className="text-2xl font-bold mb-4 text-foreground">What I Learned</h2>
+                <p className="text-muted-foreground leading-relaxed">{project.learned}</p>
+              </div>
+            </TiltWrapper>
           </motion.section>
         </div>
 
@@ -133,39 +144,43 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
                                   "Project Links";
 
               return (
-                <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-purple-500/50">
-                  <h3 className="text-xl font-bold mb-6 text-foreground">{headingText}</h3>
-                  <div className="flex flex-col gap-4">
-                    {hasLive && (
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <OriginButton className="w-full h-10 gap-2 bg-primary text-primary-foreground border-transparent hover:text-background">
-                          Live Demo <ExternalLink className="w-4 h-4" />
-                        </OriginButton>
-                      </a>
-                    )}
-                    {hasGithub && (
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <OriginButton className="w-full h-10 gap-2 bg-foreground/5 border-foreground/10 text-foreground">
-                          <Code2 className="w-4 h-4" /> Source Code
-                        </OriginButton>
-                      </a>
-                    )}
+                <TiltWrapper>
+                  <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-purple-500/50 h-full">
+                    <h3 className="text-xl font-bold mb-6 text-foreground">{headingText}</h3>
+                    <div className="flex flex-col gap-4">
+                      {hasLive && (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <OriginButton className="w-full h-10 gap-2 bg-primary text-primary-foreground border-transparent hover:text-background">
+                            Live Demo <ExternalLink className="w-4 h-4" />
+                          </OriginButton>
+                        </a>
+                      )}
+                      {hasGithub && (
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <OriginButton className="w-full h-10 gap-2 bg-foreground/5 border-foreground/10 text-foreground">
+                            <Code2 className="w-4 h-4" /> Source Code
+                          </OriginButton>
+                        </a>
+                      )}
+                    </div>
                   </div>
-                </div>
+                </TiltWrapper>
               );
             })()}
 
-            <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-cyan-500/50">
-              <h3 className="text-xl font-bold mb-6 text-foreground">Key Features</h3>
-              <ul className="space-y-4">
-                {project.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-muted-foreground leading-relaxed text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <TiltWrapper>
+              <div className="bg-foreground/5 p-6 md:p-8 rounded-2xl border-l-4 border-l-cyan-500/50 h-full">
+                <h3 className="text-xl font-bold mb-6 text-foreground">Key Features</h3>
+                <ul className="space-y-4">
+                  {project.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3 text-muted-foreground leading-relaxed text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </TiltWrapper>
           </motion.div>
         </div>
       </div>
