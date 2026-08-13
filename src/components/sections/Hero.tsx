@@ -14,8 +14,10 @@ import { Spotlight } from "@/components/ui/spotlight";
 
 const Particles = () => {
   const [particles, setParticles] = useState<{left: string, top: string, duration: number, delay: number}[]>([]);
+  const [isMobile, setIsMobile] = useState(true);
   
   useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setParticles(
       [...Array(20)].map(() => ({
@@ -27,7 +29,7 @@ const Particles = () => {
     );
   }, []);
 
-  if (particles.length === 0) return null;
+  if (isMobile || particles.length === 0) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -56,6 +58,12 @@ const Particles = () => {
 };
 
 export function Hero() {
+  const [isMobile, setIsMobile] = useState(true);
+  
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+  }, []);
+
   return (
     <section 
       className="relative w-full pb-12"
@@ -141,20 +149,22 @@ export function Hero() {
 
             {/* Right Column: 3D Scene */}
             <motion.div 
-              className="relative w-full h-full min-h-[400px] flex items-center justify-center lg:justify-end"
+              className="relative w-full h-full min-h-[400px] hidden lg:flex items-center justify-center lg:justify-end"
               initial={{ opacity: 0, scale: 0.9, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              <div className="relative w-[120%] aspect-square rounded-3xl overflow-hidden pointer-events-auto flex items-center justify-center bg-foreground/5 shadow-xl border border-foreground/10">
-                <Spotlight
-                  className="-top-40 left-0 md:left-60 md:-top-20"
-                />
-                <SplineScene 
-                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full"
-                />
-              </div>
+              {!isMobile && (
+                <div className="relative w-[120%] aspect-square rounded-3xl overflow-hidden pointer-events-auto flex items-center justify-center bg-foreground/5 shadow-xl border border-foreground/10">
+                  <Spotlight
+                    className="-top-40 left-0 md:left-60 md:-top-20"
+                  />
+                  <SplineScene 
+                    scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                    className="w-full h-full"
+                  />
+                </div>
+              )}
             </motion.div>
           </div>
 

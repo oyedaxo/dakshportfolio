@@ -12,6 +12,12 @@ export const TiltWrapper = ({
   className?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = React.useState(true);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
+    checkMobile();
+  }, []);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -24,7 +30,7 @@ export const TiltWrapper = ({
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (!ref.current || isMobile) return;
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -39,9 +45,14 @@ export const TiltWrapper = ({
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return;
     x.set(0);
     y.set(0);
   };
+
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
