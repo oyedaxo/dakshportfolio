@@ -4,6 +4,7 @@ import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
+import { OriginButton } from "@/components/ui/origin-button";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function ThemeToggle() {
@@ -22,11 +23,9 @@ export function ThemeToggle() {
 
   return (
     <div className="fixed bottom-8 left-8 z-50">
-      <Button
-        variant="outline"
-        size="icon"
-        className="rounded-full w-12 h-12 bg-background/50 backdrop-blur-md border-foreground/10 hover:bg-foreground/10 shadow-lg text-foreground transition-all flex items-center justify-center overflow-hidden"
+      <OriginButton
         onClick={() => setTheme(isDark ? "light" : "dark")}
+        className="w-12 h-12 rounded-full liquid-glass border border-foreground/10 px-0 flex items-center justify-center bg-foreground/5 text-foreground hover:text-background"
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -44,7 +43,7 @@ export function ThemeToggle() {
           </motion.div>
         </AnimatePresence>
         <span className="sr-only">Toggle theme</span>
-      </Button>
+      </OriginButton>
     </div>
   );
 }

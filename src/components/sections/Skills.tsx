@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { OriginButton } from "@/components/ui/origin-button";
 import { skillsData } from "@/data/skills";
+import { cn } from "@/lib/utils";
 
 export function Skills() {
   return (
@@ -46,12 +48,15 @@ export function Skills() {
               
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <div 
+                  <OriginButton 
                     key={skill}
-                    className="px-4 py-2 rounded-lg bg-background text-sm font-medium text-foreground border border-foreground/5 shadow-sm hover:border-primary/30 transition-colors"
+                    className={cn(
+                      "px-4 py-2 h-9 rounded-lg text-sm font-medium text-foreground transition-colors",
+                      "bg-background dark:bg-background border border-foreground/5 shadow-sm hover:border-primary/30"
+                    )}
                   >
                     {skill}
-                  </div>
+                  </OriginButton>
                 ))}
               </div>
             </motion.div>

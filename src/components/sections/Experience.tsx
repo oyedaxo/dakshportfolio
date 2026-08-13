@@ -38,8 +38,8 @@ export function Experience() {
               transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
               className="liquid-glass rounded-3xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start hover:-translate-y-1 transition-transform group"
             >
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Briefcase className="w-6 h-6 text-blue-500" />
+              <div className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <Briefcase className="w-6 h-6 text-foreground" />
               </div>
               <div className="flex flex-col flex-1 w-full gap-4">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
@@ -47,7 +47,7 @@ export function Experience() {
                     <h3 className="text-xl font-bold text-foreground leading-tight">
                       {exp.role}
                     </h3>
-                    <div className="text-blue-500 font-medium">
+                    <div className="text-foreground font-medium">
                       {exp.company}
                     </div>
                   </div>
@@ -66,7 +66,7 @@ export function Experience() {
                 <ul className="flex flex-col gap-2 mt-2">
                   {exp.highlights.map((highlight, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-muted-foreground leading-relaxed">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500/50 mt-2.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-foreground/50 mt-2.5 shrink-0" />
                       <span className="text-[15px]">{highlight}</span>
                     </li>
                   ))}

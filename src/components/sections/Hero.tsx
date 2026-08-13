@@ -5,10 +5,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OriginButton } from "@/components/ui/origin-button";
 import { personalData } from "@/data/personal";
 import { socialsData } from "@/data/socials";
 import { statsData } from "@/data/stats";
-import { Component as Globe } from "@/components/ui/interactive-globe";
+import { SplineScene } from "@/components/ui/splite";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const Particles = () => {
   const [particles, setParticles] = useState<{left: string, top: string, duration: number, delay: number}[]>([]);
@@ -59,7 +61,6 @@ export function Hero() {
       className="relative w-full pb-12"
     >
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-background z-0" />
       {/* Subtle Noise Texture */}
       <div className="absolute inset-0 opacity-[0.03] z-0 pointer-events-none mix-blend-overlay" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E")' }} />
 
@@ -78,11 +79,11 @@ export function Hero() {
           >
             {/* Badge */}
             <motion.div 
-              className="px-4 py-1.5 rounded-full flex items-center gap-2 bg-green-500/10 border border-green-500/20 w-fit"
+              className="px-4 py-1.5 rounded-full flex items-center gap-2 liquid-glass w-fit"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-xs font-semibold text-green-600 dark:text-green-400">Open to Work</span>
+              <div className="w-2 h-2 rounded-full bg-foreground animate-pulse" />
+              <span className="text-xs font-semibold text-foreground">Open to Work</span>
             </motion.div>
 
             {/* Heading */}
@@ -100,22 +101,22 @@ export function Hero() {
 
             {/* Description */}
             <p className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed whitespace-pre-wrap">
-              I build modern web applications and AI-powered products that solve real problems.
+              I'm building modern web applications and AI-powered products that solve real problems.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap items-center gap-4 mt-2">
               <Link href="#projects">
-                <Button className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground transition-all rounded-xl px-6 h-12 text-sm font-semibold shadow-lg shadow-primary/25">
+                <OriginButton className="gap-2 bg-primary text-primary-foreground border-transparent shadow-lg shadow-primary/25 hover:text-background">
                   {personalData.viewProjectsButtonText}
                   <ArrowRight className="w-4 h-4" />
-                </Button>
+                </OriginButton>
               </Link>
               <a href="/Daksh_Chaudhary_CV.pdf" download="Daksh_Chaudhary_CV.pdf">
-                <Button variant="outline" className="gap-2 bg-foreground/5 hover:bg-foreground/10 transition-all rounded-xl px-6 h-12 text-sm text-foreground font-semibold border-foreground/10">
+                <OriginButton className="gap-2 bg-foreground/5 text-foreground border-foreground/10">
                   <Download className="w-4 h-4" />
                   {personalData.resumeButtonText}
-                </Button>
+                </OriginButton>
               </a>
             </div>
 
@@ -138,15 +139,21 @@ export function Hero() {
           </motion.div>
 
 
-            {/* Right Column: Quantum Nebula */}
+            {/* Right Column: 3D Scene */}
             <motion.div 
               className="relative w-full h-full min-h-[400px] flex items-center justify-center lg:justify-end"
               initial={{ opacity: 0, scale: 0.9, x: 20 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square rounded-full pointer-events-auto flex items-center justify-center">
-                <Globe size={460} className="max-w-full z-10" />
+              <div className="relative w-[120%] aspect-square rounded-3xl overflow-hidden pointer-events-auto flex items-center justify-center bg-foreground/5 shadow-xl border border-foreground/10">
+                <Spotlight
+                  className="-top-40 left-0 md:left-60 md:-top-20"
+                />
+                <SplineScene 
+                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                  className="w-full h-full"
+                />
               </div>
             </motion.div>
           </div>
@@ -156,14 +163,14 @@ export function Hero() {
             {statsData.map((stat, index) => (
               <motion.div 
                 key={index}
-                className="flex items-center gap-4 px-6 py-5 bg-foreground/5 rounded-2xl border border-foreground/5 transition-colors shadow-sm"
+                className="flex items-center gap-4 px-6 py-5 liquid-glass rounded-2xl transition-all shadow-sm group"
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
               >
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <stat.icon className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-full bg-foreground/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <stat.icon className="w-5 h-5 text-foreground" />
                 </div>
                 <div className="flex flex-col">
                   <div className="text-xl font-bold text-foreground flex items-center">

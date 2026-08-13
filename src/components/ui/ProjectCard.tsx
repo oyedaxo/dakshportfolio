@@ -1,8 +1,6 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
@@ -17,47 +15,10 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ slug, title, description, image, technologies }: ProjectCardProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 40 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 40 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
-    <Link href={`/projects/${slug}`} className="block h-full cursor-pointer">
-      <div style={{ perspective: "1000px" }} className="h-full">
-        <motion.div
-          ref={ref}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-          className="group relative h-full liquid-glass rounded-2xl overflow-hidden flex flex-row items-center border border-foreground/5 hover:border-primary/50 transition-colors duration-500 bg-foreground/5 p-2"
-          whileHover={{ y: -5 }}
-        >
-          {/* Animated Glow */}
+    <Link href={`/projects/${slug}`} className="block h-full cursor-pointer group [perspective:1000px]">
+      <div className="h-full relative liquid-glass rounded-2xl overflow-hidden flex flex-row items-center border border-foreground/5 hover:border-primary/50 transition-all duration-500 ease-in-out bg-foreground/5 p-2 [transform-style:preserve-3d] group-hover:[transform:rotate3d(1,-1,0,10deg)] group-hover:[box-shadow:rgba(0,0,0,0.2)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px]">
+        {/* Animated Glow */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 bg-gradient-to-br from-primary/20 via-transparent to-transparent blur-xl" />
 
           {/* Image Section */}
@@ -96,7 +57,6 @@ export function ProjectCard({ slug, title, description, image, technologies }: P
               )}
             </div>
           </div>
-        </motion.div>
       </div>
     </Link>
   );

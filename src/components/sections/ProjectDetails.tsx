@@ -3,8 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Globe, Code2, CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowLeft, Globe, Code2, CheckCircle2, ArrowRight, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OriginButton } from "@/components/ui/origin-button";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Project } from "@/types";
 
@@ -23,12 +24,12 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Button asChild variant="ghost" className="hover:bg-primary/10 hover:text-primary transition-colors text-muted-foreground">
-          <Link href="/#projects">
+        <Link href="/#projects">
+          <OriginButton className="bg-transparent border-transparent hover:bg-primary/10 hover:text-primary transition-colors text-muted-foreground px-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Projects
-          </Link>
-        </Button>
+          </OriginButton>
+        </Link>
       </motion.div>
 
       {/* Hero Banner */}
@@ -136,20 +137,18 @@ export function ProjectDetails({ project, prevProject, nextProject }: ProjectDet
                   <h3 className="text-xl font-bold mb-6 text-foreground">{headingText}</h3>
                   <div className="flex flex-col gap-4">
                     {hasLive && (
-                      <Button asChild className="w-full h-10 gap-2 bg-primary hover:bg-primary/90 text-primary-foreground transition-all rounded-full font-medium">
-                        <Link href={project.liveUrl} target="_blank">
-                          <Globe className="w-4 h-4" />
-                          Live Demo
-                        </Link>
-                      </Button>
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <OriginButton className="w-full h-10 gap-2 bg-primary text-primary-foreground border-transparent hover:text-background">
+                          Live Demo <ExternalLink className="w-4 h-4" />
+                        </OriginButton>
+                      </a>
                     )}
                     {hasGithub && (
-                      <Button asChild variant="outline" className="w-full h-10 gap-2 liquid-glass hover:bg-foreground/5 transition-all rounded-full border-foreground/10 text-foreground">
-                        <Link href={project.githubUrl} target="_blank">
-                          <Code2 className="w-4 h-4" />
-                          Source Code
-                        </Link>
-                      </Button>
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <OriginButton className="w-full h-10 gap-2 bg-foreground/5 border-foreground/10 text-foreground">
+                          <Code2 className="w-4 h-4" /> Source Code
+                        </OriginButton>
+                      </a>
                     )}
                   </div>
                 </div>

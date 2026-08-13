@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Video } from "lucide-react";
 import Link from "next/link";
+import { OriginButton } from "@/components/ui/origin-button";
 
 
 export function EditingStuff() {
@@ -14,13 +15,13 @@ export function EditingStuff() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <Link href="https://drive.google.com/drive/folders/1JabS5qRMWWK60jO4VNjvebGwYOtRSEN7?usp=drive_link" target="_blank" rel="noopener noreferrer">
-            <div className="relative overflow-hidden rounded-3xl group p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-primary/20 hover:border-primary/50 transition-colors bg-transparent">
+          <Link href="https://drive.google.com/drive/folders/1JabS5qRMWWK60jO4VNjvebGwYOtRSEN7?usp=drive_link" target="_blank" rel="noopener noreferrer" className="block group [perspective:1000px]">
+            <div className="relative overflow-hidden rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-primary/20 hover:border-primary/50 transition-all duration-500 ease-in-out liquid-glass [transform-style:preserve-3d] group-hover:[transform:rotate3d(1,-1,0,15deg)] group-hover:[box-shadow:rgba(0,0,0,0.2)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px]">
               
               {/* Background Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
               
-              <div className="relative z-10 flex items-center gap-6">
+              <div className="relative z-10 flex items-center gap-6 [transform:translate3d(0,0,26px)]">
                 <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center shrink-0 border border-primary/30">
                   <Video className="w-8 h-8 text-primary" />
                 </div>
@@ -35,10 +36,10 @@ export function EditingStuff() {
                 </div>
               </div>
 
-              <div className="relative z-10 hidden md:block">
-                <div className="px-6 py-3 rounded-full bg-foreground text-background font-medium group-hover:scale-105 transition-transform duration-300">
+              <div className="relative z-10 hidden md:block [transform:translate3d(0,0,26px)]">
+                <OriginButton className="bg-foreground text-background pointer-events-none group-hover:scale-105 transition-transform duration-300">
                   View Portfolio
-                </div>
+                </OriginButton>
               </div>
             </div>
           </Link>

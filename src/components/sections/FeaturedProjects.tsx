@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { OriginButton } from "@/components/ui/origin-button";
 import { projects } from "@/data/projects";
+import { cn } from "@/lib/utils";
 
 const categories = ["All", "Web Development", "AI / ML", "Tools"];
 
@@ -45,17 +47,18 @@ export function FeaturedProjects() {
             transition={{ delay: 0.2 }}
           >
             {categories.map((category) => (
-              <button
+              <OriginButton
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={cn(
+                  "px-4 py-2 h-10 rounded-full text-sm font-medium transition-all border-transparent",
                   activeCategory === category 
-                    ? "bg-primary text-primary-foreground shadow-md" 
-                    : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10 hover:text-foreground"
-                }`}
+                    ? "bg-primary text-primary-foreground dark:bg-primary dark:text-primary-foreground shadow-md hover:text-background" 
+                    : "bg-foreground/5 dark:bg-foreground/5 text-muted-foreground hover:bg-foreground/10 dark:hover:bg-foreground/10 hover:text-foreground"
+                )}
               >
                 {category}
-              </button>
+              </OriginButton>
             ))}
           </motion.div>
         </div>

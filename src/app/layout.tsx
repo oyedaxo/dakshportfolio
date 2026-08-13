@@ -8,6 +8,8 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { personalData } from "@/data/personal";
 import { socialsData } from "@/data/socials";
+import KineticGrid from "@/components/ui/kinetic-grid";
+import { SmoothScrolling } from "@/components/SmoothScrolling";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -92,17 +94,21 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground relative transition-colors duration-300">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <GlobalSpotlight />
-          <Navbar />
-          <main className="flex-1 flex flex-col pt-0">
-            {children}
-          </main>
-          <BackToTop />
-          <ThemeToggle />
+          <SmoothScrolling>
+            <KineticGrid globalColor="monochrome">
+              <GlobalSpotlight />
+              <Navbar />
+              <main className="flex-1 flex flex-col pt-0">
+                {children}
+              </main>
+              <BackToTop />
+              <ThemeToggle />
+            </KineticGrid>
+          </SmoothScrolling>
         </ThemeProvider>
       </body>
     </html>
